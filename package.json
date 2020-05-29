@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@azure/ai-text-analytics": "^1.0.0-preview.5",
+    "@azure/cosmos": "^3.6.3",
     "dotenv": "^8.2.0",
     "ibm-watson": "^5.5.0",
     "koa": "^2.12.0",
