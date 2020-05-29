@@ -20,10 +20,8 @@ router.get(BASE_URL, async (ctx) => {
 
 router.post(BASE_URL, async (ctx) => {
     const text = ctx.request.body.text;
-    console.log('here: ', ctx.request.body);
     try {
         const myResponse = await sentimentAnalysis(text);
-        console.log('here: ', myResponse);
         ctx.body = {
             status: 'success',
             data: {
