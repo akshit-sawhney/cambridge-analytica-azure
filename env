@@ -1,2 +1,6 @@
 AWS_ENDPOINT=some_random_text
 AWS_KEY=some_random_text
+PORT=1337
+TONE_ANALYZER_API_KEY=some_random_text
+TONE_ANALYZER_URL=some_random_text
+TONE_ANALYZER_VERSION=some_random_text

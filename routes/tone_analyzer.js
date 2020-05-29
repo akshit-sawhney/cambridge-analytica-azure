@@ -1,9 +1,9 @@
 const Router = require('koa-router');
 
 const router = new Router();
-const BASE_URL = `/api/v1/sentiment_analysis`;
+const BASE_URL = `/api/v1/tone_analyzer`;
 
-const { sentimentAnalysis } = require('../utils/sentiment_analysis');
+const { analyze_tone } = require('../utils/tone_analyzer');
 
 router.get(BASE_URL, async (ctx) => {
     try {
@@ -21,7 +21,7 @@ router.get(BASE_URL, async (ctx) => {
 router.post(BASE_URL, async (ctx) => {
     const text = ctx.request.body.text;
     try {
-        const myResponse = await sentimentAnalysis(text);
+        const myResponse = await analyze_tone(text);
         ctx.body = {
             status: 'success',
             data: {
