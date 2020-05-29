@@ -42,5 +42,28 @@ function getAll() {
     });
 }
 
+function getByTeacherId(teacherId, category) {
+    return new Promise((resolve, reject) => {
+        const getByTeacherIdQuerySpec = {
+            query: `SELECT * from c WHERE c.teacher_id= "${teacherId}" and c.category = "${category}"`
+        };
+        try {
+            container.items
+                .query(getByTeacherIdQuerySpec)
+                .fetchAll()
+                .then(res => {
+                    resolve(res);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+    
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
 exports.create = create;
 exports.getAll = getAll;
+exports.getByTeacherId = getByTeacherId;
