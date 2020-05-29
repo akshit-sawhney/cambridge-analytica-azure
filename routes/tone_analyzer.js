@@ -11,11 +11,12 @@ const { getByTeacherIdAndCategory } = require('../controllers/text_analyzer');
 
 router.post(BASE_URL, async (ctx) => {
     const text = ctx.request.body.text;
+    const teacherId = ctx.request.body.teacher_id;
     try {
         const myResponse = await analyze_tone(text);
         if (myResponse.result && myResponse.result.document_tone && myResponse.result.document_tone.tones && myResponse.result.document_tone.tones.length) {
             const allTones = myResponse.result.document_tone.tones;
-            getByTeacherId("2", toneAnalyzerConfigs.emotionCategory)
+            getByTeacherId(teacherId, toneAnalyzerConfigs.emotionCategory)
                 .then(res => {
                     if (res && res.resources && res.resources.length) {
                         const createdItem = res.resources[0]
