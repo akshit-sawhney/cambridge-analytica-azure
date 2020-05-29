@@ -14,6 +14,7 @@ router.post(BASE_URL, async (ctx) => {
     const teacherId = ctx.request.body.teacher_id;
     try {
         const myResponse = await analyze_tone(text);
+        let returnData = [];
         if (myResponse.result && myResponse.result.document_tone && myResponse.result.document_tone.tones && myResponse.result.document_tone.tones.length) {
             const allTones = myResponse.result.document_tone.tones;
             getByTeacherId(teacherId, toneAnalyzerConfigs.emotionCategory)
@@ -41,11 +42,17 @@ router.post(BASE_URL, async (ctx) => {
                     console.log('fucked up: ', err);
                 });
         }
+        try {
+            if (myResponse.result.document_tone.tones) {
+                returnData = myResponse.result.document_tone.tones;
+            }    
+        } catch (error) {
+            
+        }
+        
         ctx.body = {
             status: 'success',
-            data: {
-                ggmu: 'done'
-            }
+            data: returnData
         };
     } catch (err) {
         console.log(err)
