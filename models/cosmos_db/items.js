@@ -64,6 +64,21 @@ function getByTeacherId(teacherId, category) {
     });
 }
 
+function update(id, category, item) {
+    return new Promise((resolve, reject) => {
+        container
+            .item(id, category)
+            .replace(item)
+            .then(res => {
+                resolve(res);
+            })
+            .catch(err => {
+                reject(err);
+            })
+    });
+}
+
 exports.create = create;
 exports.getAll = getAll;
 exports.getByTeacherId = getByTeacherId;
+exports.update = update
