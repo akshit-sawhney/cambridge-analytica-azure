@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
 
 const indexRoutes = require('./routes/index');
@@ -6,6 +7,7 @@ const sentimentRoutes = require('./routes/sentiment_analysis');
 const toneAnalyzerRoutes = require('./routes/tone_analyzer');
 
 const app = new Koa();
+app.use(cors());
 const PORT = process.env.PORT || 1337;
 
 app.use(bodyParser());
