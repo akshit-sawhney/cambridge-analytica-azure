@@ -52,11 +52,13 @@ router.post(BASE_URL, async (ctx) => {
 
 router.get(`${BASE_URL}/get_all`, async (ctx) => {
     const myResponse = await getAll();
+    let returnResponse = [];
+    if (myResponse && myResponse.resources) {
+        returnResponse = myResponse.resources;
+    }
     ctx.body = {
         status: 'success',
-        data: {
-            hala: myResponse
-        }
+        data: returnResponse
     };
 });
 
